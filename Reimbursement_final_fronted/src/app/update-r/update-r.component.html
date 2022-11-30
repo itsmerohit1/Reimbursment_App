@@ -1,0 +1,49 @@
+
+
+
+<div class="EditRecords">
+    
+<form [formGroup]="editResult" (ngSubmit)="updateReimbursements()" >
+   
+    <div class="form-group">
+        <input type="Date" placeholder="Date" formControlName="Date" >
+    </div>
+
+
+    <div >
+        <select style="min-width: 300px; padding: 7px; border-radius: 5x ;background-color:rgb(171, 140, 230,0.8);"  placeholder="Select any bank" formControlName="reim_Type">
+          <option value="" disabled selected hidden>Select Reimbursement type</option>
+          <option >Medical</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Entertainment</option>
+          <option>Any Others</option>
+        </select> 
+       
+      </div>
+
+    <div>
+         <input type="number"  placeholder=" Requested Value" formControlName="requested_Value" >
+    </div>
+
+    <div >
+        <select style="min-width: 300px; padding: 7px; border-radius: 5x ;background-color:rgb(171, 140, 230,0.8);"  placeholder="Select any Currency" formControlName="currency">
+          <option value="" disabled selected hidden>Select Currency </option>
+          <option >INR</option>
+          <option>USD</option>
+          <option>Euro</option>
+        </select> 
+       
+      </div>
+  
+    
+<div >
+    <img [src]="" style="max-width: 100px;">
+    <input type="file" (change)="onSelectFile($event)">
+</div>
+
+
+    <button  type="submit">Submit</button>
+</form>
+
+</div>

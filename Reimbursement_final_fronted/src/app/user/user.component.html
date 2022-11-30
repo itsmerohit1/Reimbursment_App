@@ -1,0 +1,83 @@
+
+
+ 
+    <div *ngIf="!showLogin" class="register">
+
+        <h2>Register</h2>
+        
+<form   [formGroup]="register" (ngSubmit)="registerUser()" >
+
+      <div class="form-group">
+        <input type="email" email class="form-control" placeholder="Enter Email" formControlName="email">
+      </div>
+          
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+      </div>
+
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Re-Enter Password" #RePassword>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter Full Name" formControlName="fullName">
+      </div>
+     
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Enter Pan Number" formControlName="panNumber">
+      </div>
+
+      
+      <div class="form-group">
+        <select style="min-width: 300px; padding: 7px; border-radius: 5x ;background-color:rgb(171, 140, 230,0.8);"  placeholder="Select any bank" formControlName="bankName">
+          <option value="" disabled selected hidden>Please Select any Bank</option>
+          <option >State Bank of India</option>
+          <option>HDFC</option>
+          <option>Punjab National Bank of India</option>
+          <option>Others</option>
+        </select> 
+       
+      </div>
+
+      
+      <div class="form-group">
+        <input type="text"  class="form-control" placeholder="Enter Bank Account No" formControlName="bankAccount">
+      </div>
+    
+      
+
+    <button  (click)="Solve(RePassword.value)" type="submit" class="btn btn-primary">Register</button>
+    <br>
+    <p><a (click)="openLogin()">Already have account, Click to Login!</a></p>
+  </form> 
+
+</div >
+
+
+    <div *ngIf="showLogin" class="register">
+
+  <h2>Login</h2>
+<span style="color: red ;background-color: bisque; ">{{isError}}</span>
+ 
+
+<form [formGroup]="login" (ngSubmit)="loginUser()" >
+
+      <div class="form-group">
+       
+        <input type="email" email ngModel class="form-control" placeholder="Enter Email" formControlName="email">
+      </div>
+          
+      <div class="form-group">
+         
+        <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+      </div>
+
+     
+    
+    <button type="submit" class="btn btn-primary">Login</button>
+    <br>
+  <p> <a (click)="closeLogin()">New User, Click to Register!</a></p> 
+  </form> 
+</div>
+

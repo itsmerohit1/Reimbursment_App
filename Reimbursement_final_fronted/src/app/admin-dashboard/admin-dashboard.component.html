@@ -1,0 +1,173 @@
+ 
+
+ 
+
+<div *ngIf="!showpic" style="margin-left: 70%;" >
+
+    <p style="background-color: rgb(82, 147, 227); color: antiquewhite; padding: 10px; border-radius: 5px; max-width: 180px;"> Reimbursement Type</p>
+  
+          <select (change)="filter1($any($event.target).value)" style="min-width: 200px; background-color:antiquewhite; padding: 5px; border-radius: 5px; ">
+                    <option value="" disabled selected hidden > Reimbursement Type</option>
+          <option style="background-color:blue ; color:rgb(8, 12, 16)" *ngFor="let x of selectedData" >{{x}}</option>
+          </select>
+ </div>
+
+<div *ngIf="!showpic"  style="margin-left: 3%; margin-top: -100px" [formGroup]="searchForm" (ngSubmit)="searchByEmail()">
+     
+ <form  style="max-width:200px"  [formGroup]="searchForm">
+<input  type="text" placeholder="type email" formControlName="searchEmail">
+<button  type="submit">Search</button>
+ </form> 
+<div style="margin-left: 35%;"> 
+<button  style="background-color: rgb(82, 147, 227); color: aliceblue;" (click)="Pending()">Pending</button>
+    <button style="background-color: rgb(82, 147, 227);color: aliceblue;"  (click)="Declined()">Declined</button>
+    <button  style="background-color: rgb(82, 147, 227);color: aliceblue;" (click)="Approved()">Approved</button>
+</div>
+</div>
+
+
+
+<div *ngIf="!PopUp && !showpic" class="board">
+ 
+<table>
+    <tr>
+    
+    <td>
+        Date
+    </td>
+    <td>
+        Requested By
+    </td>
+    <td>
+        Reimbursement Type
+    </td>
+    <td>
+        Requested Value
+    </td>
+    <td>
+        Approved Value
+    </td>
+    <td>
+        Currency
+    </td>
+    <td>
+        Reciept Attached
+    </td>
+        
+</tr>
+
+<tr *ngFor="let  x of boardPending">
+
+    <td>
+  {{x.date}}
+    </td>
+    <td>
+{{x.email}}
+    </td>
+    <td>
+{{x.reim_Type}}
+    </td>
+    <td>
+{{x.requested_Value}}
+    </td>
+<td>
+    {{x.approved_Value}}
+</td>
+    <td>
+{{x.currency}}
+    </td>
+    <td *ngIf="(x.recieptAttached)" (click)="showPic(x.recieptAttached)">
+   Click to View Reciept
+    </td>
+    <td *ngIf="(!x.recieptAttached)">
+       No Reciept
+            </td>
+            
+
+    <td> <a routerLink="/updateAdminApprove/{{x.id}}">
+       Approve
+    </a>
+    </td>
+    <td> <a routerLink="/updateAdminDecline/{{x.id}}">
+        Decline
+     </a>
+     </td>
+
+</tr>
+
+
+<tr *ngFor="let  x of boardApproved">
+
+    <td>
+  {{x.date}}
+    </td>
+    <td>
+{{x.email}}
+    </td>
+    <td>
+{{x.reim_Type}}
+    </td>
+    <td>
+{{x.requested_Value}}
+    </td>
+    <td>
+        {{x.approved_Value}}
+    </td>
+    <td>
+{{x.currency}}
+    </td>
+    <td *ngIf="(x.recieptAttached)" (click)="showPic(x.recieptAttached)">
+        Click to View Reciept
+         </td>
+         <td *ngIf="(!x.recieptAttached)">
+            No Reciept
+                 </td>
+
+   
+    
+
+</tr>
+
+<tr *ngFor="let  x of boardDeclined">
+
+    <td>
+  {{x.date}}
+    </td>
+    <td>
+{{x.email}}
+    </td>
+    <td>
+{{x.reim_Type}}
+    </td>
+    <td>
+{{x.requested_Value}}
+    </td>
+    <td>
+        {{x.approved_Value}}
+    </td>
+    <td>
+{{x.currency}}
+    </td>
+    <td *ngIf="(x.recieptAttached)" (click)="showPic(x.recieptAttached)">
+        Click to View Reciept
+         </td>
+         <td *ngIf="(!x.recieptAttached)">
+            No Reciept
+         </td>
+</tr>
+
+
+</table>
+
+</div>
+
+<button *ngIf="showpic" style="text-align: center;color: brown; margin-left: 40%; " (click)="closePic()">Go to  DashBoard</button>
+
+<div *ngIf="showpic" class="picture" >
+   
+    <img [src]="url" style="max-width: 600px;">
+   
+</div>
+
+
+

@@ -1,0 +1,17 @@
+ 
+ <div>
+ <h1 style="   text-align: center  ; margin-left: 35%;margin-bottom: -30px; padding: 15px; border-radius: 15px;  background-color: bisque; width:fit-content;"> Reimbursement App </h1>
+</div>
+
+  
+<!-- 
+ <button *ngIf="!UserLogged && !AdminLogged"><a style="text-decoration: none" routerLink="image">Image</a></button> -->
+
+ <!-- <button *ngIf="UserLogged"><a style="text-decoration: none" routerLink="EmployeeDashboard">EmployeeDashBoard</a></button> -->
+ <!-- <button *ngIf="AdminLogged"><a style="text-decoration: none" routerLink="admin">AdminDashBoard</a></button> -->
+ 
+ <div *ngIf="AdminLogged || UserLogged" >
+ <button  style="padding: 15px; margin-left: 2%; margin-top:-200px; margin-bottom: 50px; border-radius: 10px; color: aliceblue; background-color:rgb(78, 78, 218);"><a style="text-decoration:none;  "  (click)="Logout()">Logout</a></button>
+ </div>
+
+<router-outlet></router-outlet>

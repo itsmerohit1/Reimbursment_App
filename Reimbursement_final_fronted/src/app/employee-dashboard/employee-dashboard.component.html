@@ -1,0 +1,112 @@
+
+ 
+<button (click)="getEmployeeDashboard()" >EmployeeDashboard</button>
+
+
+<button (click)="AddNewReimbursements()" >Add new Reimbursement</button>
+ 
+
+<div *ngIf="closeDashboard" class="addRecords" > 
+<form [formGroup]="addRecords" (ngSubmit)="addReimbursement()" >
+   
+    <div >
+        <input type="Date" placeholder="Date" formControlName="Date" >
+    </div>
+
+   
+    <div >
+        <select style="min-width: 300px; padding: 7px; border-radius: 5x ;background-color:rgb(171, 140, 230,0.8);"  placeholder="Select any bank" formControlName="reim_Type">
+          <option value="" disabled selected hidden>Select Reimbursement type</option>
+          <option >Medical</option>
+          <option>Travel</option>
+          <option>Food</option>
+          <option>Entertainment</option>
+          <option>Any Others</option>
+        </select> 
+       
+      </div>
+
+    <div>
+         <input type="number"  placeholder=" Requested Value" formControlName="requested_Value" >
+    </div>
+
+    <div >
+        <select style="min-width: 300px; padding: 7px; border-radius: 5x ;background-color:rgb(171, 140, 230,0.8);"  placeholder="Select any Currency" formControlName="currency">
+          <option value="" disabled selected hidden>Select Currency </option>
+          <option >INR</option>
+          <option>USD</option>
+          <option>Euro</option>
+        </select> 
+       
+      </div>
+  
+<div >
+    <img [src]="url" style="max-width: 100px;">
+    <input type="file" (change)="onSelectFile($event)">
+</div>
+
+
+    <button  type="submit">Submit</button>
+</form>
+</div>
+
+
+<div *ngIf="!closeDashboard" class="board">
+ 
+
+<table >
+    <tr>
+        <td>
+            Date
+        </td>
+        <td>
+         Reimbursement type
+        </td>
+        <td>
+            Requested Value
+        </td>
+        <td>
+            Approved Value
+        </td>
+        <td>
+            Currency
+        </td>
+        <td>
+            Request Phase
+        </td>
+        <td>
+            Reciept Attached
+        </td>
+       <td>
+        Delete
+       </td>
+        <td>
+        Update
+        </td> 
+
+    </tr>
+    
+
+<tr *ngFor="let x of board1">
+    <td> {{x.date}} </td> 
+    <td> {{x.reim_Type}} </td> 
+    <td> {{x.requested_Value}} </td> 
+    <td *ngIf="(x.requestPhase=='Processed')"> {{x.approved_Value}} </td> 
+    <td *ngIf="(x.requestPhase!='Processed')">  </td> 
+    <td> {{x.currency}} </td> 
+    <td> {{x.requestPhase}} </td> 
+    <td *ngIf="(x.recieptAttached)">Yes</td>  
+    <td *ngIf="(!x.recieptAttached)">No</td>  
+    
+    <td *ngIf="(x.requestPhase!='Processed')"> <i (click)="deleteRecord(x.id)" class="fa fa-trash" style="font-size:20px; color: red;"></i></td>
+    <td *ngIf="(x.requestPhase!='Processed')"> <a routerLink="/update/{{x.id}}">
+        <i class="fa fa-edit" style="font-size:20px; color: red;">
+        </i>
+    </a>
+    </td>
+    
+</tr>
+
+</table>
+    
+</div>

@@ -1,0 +1,55 @@
+.register{
+    position: relative;
+    
+    text-align: center;
+    padding: 15px;
+     width: 300px;
+    margin-left:35%;
+    background-color: antiquewhite;
+    border-radius: 15px;
+    margin-top: 70px;
+    
+    
+}
+
+label{
+    color: blue;
+    font-size:20px ;
+}
+button{
+    color: rgb(117, 117, 221);
+    background-color: blanchedalmond;
+    
+}
+
+input{
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: rgb(171, 140, 230,0.8);
+  box-shadow: 10px red;
+}
+
+input::placeholder{
+    text-align: center;
+   color: azure;
+    
+}
+
+.register{
+    position: relative;
+     z-index: 1;
+    text-align: center;
+    padding: 15px;
+     width: 300px;
+    margin-left:35%;
+    background-color: antiquewhite;
+    border-radius: 15px;
+   
+    
+    
+}

@@ -1,0 +1,8 @@
+
+
+
+<form *ngIf="PopUp" [formGroup]="board1" class="addRecords" (ngSubmit)="Approve()">
+    <h3>Approve by </h3>
+  <input type="number" placeholder="Approve Amount" formControlName="approved_Value" >
+  <button type="submit">Approve</button>
+</form>
